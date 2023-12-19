@@ -2,16 +2,6 @@
 	"name": "quinten/laravel-csr",
 	"type": "library",
 	"description": "This package makes it possible to generate alot of stuff",
-	"keywords": [
-		"command",
-		"generate",
-		"CSR",
-		"controller",
-		"service",
-		"repository",
-		"model",
-		"migration"
-	],
 	"license": "MIT",
 	"authors": [
 		{
