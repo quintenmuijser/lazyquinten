@@ -32,6 +32,6 @@ class CreateController extends CsrGeneratorCommand
      */
     protected function getStub(): string
     {
-        return __DIR__ . '/../stubs/concrete/controller.stub';
+        return $this->getStubPath('files/backend/controller');
     }
 }
