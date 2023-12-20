@@ -6,7 +6,7 @@ namespace DummyNamespace;
 
 use App\Models\User;
 
-class {{Variable}}Policy
+class {{Variable}}
 {
     {{StubBody}}
 }

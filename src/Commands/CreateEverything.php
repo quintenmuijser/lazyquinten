@@ -28,9 +28,16 @@ class CreateEverything extends Command
 
     public function handle(): void
     {
-        $name = ucfirst($this->argument('name'));
-        $namespace = ucfirst($this->argument('namespace') ?? '');
-        $this->createController($namespace, $name);
+
+        $config = $this->loadConfig();
+        $this->displayLoadedConfig($config);
+
+        foreach ($config['entities'] as $entity) {
+            $name = ucfirst($entity['name']);
+            $namespace = ucfirst($this->argument('namespace') ?? '');
+
+            $this->createController($namespace, $name);
+        }
 
         $this->alert('Generation complete, lets pray no bugs or errors were made!');
     }
@@ -42,5 +49,41 @@ class CreateEverything extends Command
             'basename' => $name,
             'namespace' => $namespace,
         ]);
+    }
+
+    private function loadConfig(): array
+    {
+        $configPath = config_path('csr.php');
+
+        if (!File::exists($configPath)) {
+            $this->error('Config file not found. Make sure it exists at config/csr.php.');
+
+            // You may handle this situation differently based on your needs
+            exit(1);
+        }
+
+        return include $configPath;
+    }
+
+    private function displayLoadedConfig(array $config): void
+    {
+        $this->info('Loaded Configuration:');
+        $this->info('=====================');
+        $this->info(json_encode($config, JSON_PRETTY_PRINT));
+    }
+
+    private function getModelConfig(array $entity): array
+    {
+        return $entity['database']['model'] ?? [];
+    }
+
+    private function getRelationshipsConfig(array $entity): array
+    {
+        return $entity['database']['relationships'] ?? [];
+    }
+
+    private function getControllerConfig(array $entity): array
+    {
+        return $entity['controller'] ?? [];
     }
 }

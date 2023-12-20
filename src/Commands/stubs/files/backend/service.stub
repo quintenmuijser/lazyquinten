@@ -7,7 +7,7 @@ namespace DummyNamespace;
 use App\Models\{{Variable}};
 use App\Interfaces\Repositories\{{NamespaceShort}}I{{BaseName}}Repository;
 
-class {{Variable}}Service
+class {{Variable}}
 {
     /**
      * @var {{NamespaceShort}}I{{BaseName}}Repository

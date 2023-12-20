@@ -6,7 +6,7 @@ namespace DummyNamespace;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class {{Variable}}StoreRequest extends FormRequest
+class {{Variable}} extends FormRequest
 {
     {{StubAuthorize}}
 
