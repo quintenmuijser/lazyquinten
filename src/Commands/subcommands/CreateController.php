@@ -17,7 +17,7 @@ class CreateController extends CsrGeneratorCommand
                             {name : The name of the controller to be created}
                             {basename : The name of the controller to be created}
                             {namespace? : The namespace and folder to place the item in}
-                            {data?: The entity}';
+                            {data? : The entity}';
 
     /**
      * The type of class being generated.

@@ -36,7 +36,7 @@ class CreateEverything extends Command
         foreach ($config['entities'] as $entity) {
             $name = ucfirst($entity['name']);
             $namespace = ucfirst($this->argument('namespace') ?? '');
-            dump($entity);
+            dd($entity);
             $this->createController($namespace, $name, $entity);
         }
 
