@@ -1,0 +1,13 @@
+<?php
+
+declare(strict_types=1);
+
+namespace DummyNamespace;
+
+use App\Models\{{Variable}};
+use App\Interfaces\Repositories\{{NamespaceShort}}I{{BaseName}}Repository;
+
+class {{Variable}} implements {{NamespaceShort}}I{{BaseName}}Repository
+{
+    {{StubBody}}
+}

@@ -6,18 +6,17 @@ namespace Quinten\Csr\Commands;
 
 use Illuminate\Support\Str;
 
-class CreateController extends CsrGeneratorCommand
+class CreateRepoService extends CsrGeneratorCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'csr:controller
+    protected $signature = 'csr:reposervice
                             {name : The name of the controller to be created}
                             {basename : The name of the controller to be created}
-                            {namespace? : The namespace and folder to place the item in}
-                            {data: The entity}';
+                            {namespace? : The namespace and folder to place the item in}';
 
     /**
      * The type of class being generated.
@@ -33,7 +32,6 @@ class CreateController extends CsrGeneratorCommand
      */
     protected function getStub(): string
     {
-        dd($this->argument('data'));
         return $this->getStubPath('files/backend/controller');
     }
 

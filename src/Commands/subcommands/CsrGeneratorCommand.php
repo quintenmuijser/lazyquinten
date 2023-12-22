@@ -37,21 +37,9 @@ abstract class CsrGeneratorCommand extends GeneratorCommand
         );
     }
 
-    protected function buildReplacements(array $replace)
-    {
-        $className = $this->validateName($this->argument('name'));
-        $namespace = $this->argument('namespace');
-        $baseName = $this->argument('basename');
-
-        return array_merge($replace, [
-            '{{BaseName}}' => $baseName,
-            '{{baseName}}' => lcfirst($baseName),
-            '{{Variable}}' => ucfirst(class_basename($className)),
-            '{{NamespaceShort}}' => $namespace ? ucfirst(strtolower($namespace)) . '\\' : '',
-        ]);
-    }
 
 
+    protected abstract function buildReplacements(array $replace);
 
     protected function validateName($name)
     {

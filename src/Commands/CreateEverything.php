@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Quinten\Csr\Src\Commands;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Console\GeneratorCommand;
@@ -36,18 +37,19 @@ class CreateEverything extends Command
             $name = ucfirst($entity['name']);
             $namespace = ucfirst($this->argument('namespace') ?? '');
 
-            $this->createController($namespace, $name);
+            $this->createController($namespace, $name, $this->getControllerConfig($entity));
         }
 
         $this->alert('Generation complete, lets pray no bugs or errors were made!');
     }
 
-    private function createController(string $namespace, string $name): void
+    private function createController(string $namespace, string $name, $data): void
     {
         $this->call('csr:controller', [
             'name' => $this->paths['controller'] . '/' . $namespace . '/' . $name . 'Controller',
             'basename' => $name,
             'namespace' => $namespace,
+            'data' => $data,
         ]);
     }
 
