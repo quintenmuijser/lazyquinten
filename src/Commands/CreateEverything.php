@@ -45,7 +45,7 @@ class CreateEverything extends Command
     private function createController(string $namespace, string $name, $config): void
     {
         $data = [
-            'crud' => (bool) $config['crud'],
+            'crud' => $config['crud'],
             'controller' => $config['controller']
         ];
 
