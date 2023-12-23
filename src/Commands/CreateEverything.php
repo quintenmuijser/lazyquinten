@@ -31,19 +31,24 @@ class CreateEverything extends Command
     {
 
         $config = $this->loadConfig();
-        $this->displayLoadedConfig($config);
+//        $this->displayLoadedConfig($config);
 
         foreach ($config['entities'] as $entity) {
             $name = ucfirst($entity['name']);
             $namespace = ucfirst($this->argument('namespace') ?? '');
-            $this->createController($namespace, $name, $entity);
+            $this->createController($namespace, $name, $config);
         }
 
         $this->alert('Generation complete, lets pray no bugs or errors were made!');
     }
 
-    private function createController(string $namespace, string $name, $data): void
+    private function createController(string $namespace, string $name, $config): void
     {
+        $data = [
+            'crud' => (bool) $config['crud'],
+            'controller' => $config['controller']
+        ];
+
         $this->call('csr:controller', [
             'name' => $this->paths['controller'] . '/' . $namespace . '/' . $name . 'Controller',
             'basename' => $name,
