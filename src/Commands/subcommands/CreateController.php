@@ -33,7 +33,10 @@ class CreateController extends CsrGeneratorCommand
      */
     protected function getStub(): string
     {
-        dd($this->arguments()['crud']);
+        if($this->arguments()['crud']) {
+            return  __DIR__ . '/../stubs/files/backend/controller/controllerCrud.stub';
+        }
+
         return  __DIR__ . '/../stubs/files/backend/controller/controller.stub';
     }
 
