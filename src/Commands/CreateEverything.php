@@ -20,11 +20,13 @@ class CreateEverything extends Command
     protected array $paths = [
         'model' => 'Models',
         'controller' => 'Http/Controllers',
+        'requests' => 'Http/Requests',
         'service' => 'Services',
         'service_interface' => 'Interfaces/Services',
         'repository' => 'Repositories',
         'repository_interface' => 'Interfaces/Repositories',
         'policy' => 'Policies',
+        'migration' => '../database/migrations',
     ];
 
     public function handle(): void
@@ -35,6 +37,17 @@ class CreateEverything extends Command
         foreach ($config['entities'] as $entity) {
             $name = ucfirst($entity['name']);
             $namespace = ucfirst($this->argument('namespace') ?? '');
+
+            $this->createMigration($namespace,$name,$entity);
+            $this->createModel($namespace,$name,$entity);
+
+            if($entity['crud']) {
+                $this->createRequest($namespace,$name,$entity, 'Store');
+                $this->createRequest($namespace,$name,$entity, 'Update');
+                $this->createRequest($namespace,$name,$entity, 'Delete');
+
+                //policie should be used here aswell
+            }
 
             $this->createRepository($namespace, $name, $entity);
             $this->createService($namespace, $name, $entity);
@@ -85,6 +98,47 @@ class CreateEverything extends Command
             'basename' => $name,
             'namespace' => $namespace,
             'entity' => $entity,
+        ]);
+    }
+
+    private function createMigration(string $namespace, string $name, $entity): void
+    {
+        $this->call('csr:migration', [
+            'name' => $this->paths['migration'] . $name . 'MigrationByCSR',
+            'basename' => $name,
+            'namespace' => $namespace,
+            'entity' => $entity,
+        ]);
+    }
+
+    private function createModel(string $namespace, string $name, $entity): void
+    {
+        $this->call('csr:model', [
+            'name' => $this->paths['model'] . '/' . $namespace . '/' . $name,
+            'basename' => $name,
+            'namespace' => $namespace,
+            'entity' => $entity,
+        ]);
+    }
+
+    private function createPolicy(string $namespace, string $name, $entity): void
+    {
+        $this->call('csr:policy', [
+            'name' => $this->paths['policy'] . '/' . $namespace . '/' . $name . 'Policy',
+            'basename' => $name,
+            'namespace' => $namespace,
+            'entity' => $entity,
+        ]);
+    }
+
+    private function createRequest(string $namespace, string $name, $entity, $action): void
+    {
+        $this->call('csr:request', [
+            'name' => $this->paths['request'] . '/' . $namespace . '/' . $action . $name . 'Request',
+            'basename' => $name,
+            'namespace' => $namespace,
+            'entity' => $entity,
+            'action' => $action,
         ]);
     }
 

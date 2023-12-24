@@ -21,6 +21,4 @@ class {{Variable}} extends Controller
     {
         $this->{{baseName}}Service = ${{baseName}}Service;
     }
-
-    {{StubBody}}
 }

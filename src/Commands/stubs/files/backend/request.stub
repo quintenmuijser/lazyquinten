@@ -8,7 +8,4 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class {{Variable}} extends FormRequest
 {
-    {{StubAuthorize}}
-
-    {{StubRules}}
 }

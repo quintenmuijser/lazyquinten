@@ -6,5 +6,4 @@ namespace DummyNamespace;
 
 interface I{{BaseName}}Repository
 {
-    {{StubBody}}
 }
