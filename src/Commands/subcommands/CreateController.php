@@ -17,7 +17,7 @@ class CreateController extends CsrGeneratorCommand
                             {name : The name of the controller to be created}
                             {basename : The name of the controller to be created}
                             {namespace? : The namespace and folder to place the item in}
-                            {crud? : use Crud}';
+                            {entity? : use entity}';
 
     /**
      * The type of class being generated.
@@ -33,7 +33,7 @@ class CreateController extends CsrGeneratorCommand
      */
     protected function getStub(): string
     {
-        if($this->arguments()['crud']) {
+        if($this->arguments()['entity']['crud']) {
             return  __DIR__ . '/../stubs/files/backend/controller/controllerCrud.stub';
         }
 
@@ -45,7 +45,6 @@ class CreateController extends CsrGeneratorCommand
         $className = $this->validateName($this->argument('name'));
         $namespace = $this->argument('namespace');
         $baseName = $this->argument('basename');
-        $crud = $this->argument('crud');
 
         return array_merge($replace, [
             '{{BaseName}}' => $baseName,

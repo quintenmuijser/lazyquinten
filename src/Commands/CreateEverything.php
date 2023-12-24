@@ -47,7 +47,7 @@ class CreateEverything extends Command
             'name' => $this->paths['controller'] . '/' . $namespace . '/' . $name . 'Controller',
             'basename' => $name,
             'namespace' => $namespace,
-            'crud' => $entity['crud'],
+            'entity' => $entity,
         ]);
     }
 
@@ -70,20 +70,5 @@ class CreateEverything extends Command
         $this->info('Loaded Configuration:');
         $this->info('=====================');
         $this->info(json_encode($config, JSON_PRETTY_PRINT));
-    }
-
-    private function getModelConfig(array $entity): array
-    {
-        return $entity['database']['model'] ?? [];
-    }
-
-    private function getRelationshipsConfig(array $entity): array
-    {
-        return $entity['database']['relationships'] ?? [];
-    }
-
-    private function getControllerConfig(array $entity): array
-    {
-        return $entity['controller'] ?? [];
     }
 }

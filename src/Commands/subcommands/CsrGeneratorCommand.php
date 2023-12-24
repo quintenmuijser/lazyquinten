@@ -19,6 +19,21 @@ abstract class CsrGeneratorCommand extends GeneratorCommand
         parent::handle();
     }
 
+    private function getModelConfig(array $entity): array
+    {
+        return $entity['database']['model'] ?? [];
+    }
+
+    private function getRelationshipsConfig(array $entity): array
+    {
+        return $entity['database']['relationships'] ?? [];
+    }
+
+    private function getControllerConfig(array $entity): array
+    {
+        return $entity['controller'] ?? [];
+    }
+
     protected function buildClass($name)
     {
         $replace = [];
@@ -28,8 +43,6 @@ abstract class CsrGeneratorCommand extends GeneratorCommand
             array_keys($replace), array_values($replace), parent::buildClass($name)
         );
     }
-
-
 
     protected abstract function buildReplacements(array $replace);
 
