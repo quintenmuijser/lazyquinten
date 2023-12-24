@@ -11,7 +11,7 @@ use Illuminate\Console\GeneratorCommand;
 
 class CreateEverything extends Command
 {
-    protected $signature = 'csr:gen {name : The name } {namespace? : The namespace}';
+    protected $signature = 'csr:gen {namespace? : The namespace}';
 
     protected $description = 'Generate everything you need hopefully dw about the potential errors';
 
@@ -34,6 +34,7 @@ class CreateEverything extends Command
 //        $this->displayLoadedConfig($config);
 
         foreach ($config['entities'] as $entity) {
+            dd($entity);
             $name = ucfirst($entity['name']);
             $namespace = ucfirst($this->argument('namespace') ?? '');
             $this->createController($namespace, $name, $config);
