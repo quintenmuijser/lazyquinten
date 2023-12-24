@@ -34,10 +34,10 @@ class CreateService extends CsrGeneratorCommand
     protected function getStub(): string
     {
         if($this->arguments()['entity']['crud']) {
-            return  __DIR__ . '/../stubs/files/backend/service/serviceCrud.stub';
+            return  __DIR__ . '/../../stubs/files/backend/service/serviceCrud.stub';
         }
 
-        return  __DIR__ . '/../stubs/files/backend/service/service.stub';
+        return  __DIR__ . '/../../stubs/files/backend/service/service.stub';
     }
 
     protected function buildReplacements(array $replace)

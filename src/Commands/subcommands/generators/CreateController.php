@@ -34,10 +34,10 @@ class CreateController extends CsrGeneratorCommand
     protected function getStub(): string
     {
         if($this->arguments()['entity']['crud']) {
-            return  __DIR__ . '/../stubs/files/backend/controller/controllerCrud.stub';
+            return  __DIR__ . '/../../stubs/files/backend/controller/controllerCrud.stub';
         }
 
-        return  __DIR__ . '/../stubs/files/backend/controller/controller.stub';
+        return  __DIR__ . '/../../stubs/files/backend/controller/controller.stub';
     }
 
     protected function buildReplacements(array $replace)

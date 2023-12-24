@@ -34,10 +34,10 @@ class CreateRepository extends CsrGeneratorCommand
     protected function getStub(): string
     {
         if($this->arguments()['entity']['crud']) {
-            return  __DIR__ . '/../stubs/files/backend/repository/repositoryCrud.stub';
+            return  __DIR__ . '/../../stubs/files/backend/repository/repositoryCrud.stub';
         }
 
-        return  __DIR__ . '/../stubs/files/backend/repository/repository.stub';
+        return  __DIR__ . '/../../stubs/files/backend/repository/repository.stub';
     }
 
     protected function buildReplacements(array $replace)
