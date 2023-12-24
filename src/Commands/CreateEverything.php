@@ -17,7 +17,7 @@ class CreateEverything extends Command
 
     protected $type = 'Creates everything even bugs and errors';
 
-    protected $paths = [
+    protected array $paths = [
         'model' => 'Models',
         'controller' => 'Http/Controllers',
         'service' => 'Services',
@@ -31,25 +31,23 @@ class CreateEverything extends Command
     {
 
         $config = $this->loadConfig();
-//        $this->displayLoadedConfig($config);
 
         foreach ($config['entities'] as $entity) {
             $name = ucfirst($entity['name']);
             $namespace = ucfirst($this->argument('namespace') ?? '');
-            $this->createController($namespace, $name, $config);
+            $this->createController($namespace, $name, $entity);
         }
 
         $this->alert('Generation complete, lets pray no bugs or errors were made!');
     }
 
-    private function createController(string $namespace, string $name, $config): void
+    private function createController(string $namespace, string $name, $entity): void
     {
-        dd($name,$namespace,$config);
         $this->call('csr:controller', [
             'name' => $this->paths['controller'] . '/' . $namespace . '/' . $name . 'Controller',
             'basename' => $name,
             'namespace' => $namespace,
-            'data' => $config,
+            'crud' => $entity['crud'],
         ]);
     }
 
