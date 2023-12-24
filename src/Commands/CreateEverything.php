@@ -20,13 +20,13 @@ class CreateEverything extends Command
     protected array $paths = [
         'model' => 'Models',
         'controller' => 'Http/Controllers',
-        'requests' => 'Http/Requests',
+        'request' => 'Http/Requests',
         'service' => 'Services',
         'service_interface' => 'Interfaces/Services',
         'repository' => 'Repositories',
         'repository_interface' => 'Interfaces/Repositories',
         'policy' => 'Policies',
-        'migration' => '/database/migrations',
+        'migration' => '/../database/migrations',
     ];
 
     public function handle(): void
@@ -104,7 +104,7 @@ class CreateEverything extends Command
     private function createMigration(string $namespace, string $name, $entity): void
     {
         $this->call('csr:migration', [
-            'name' => $this->paths['migration'] . $name . 'MigrationByCSR',
+            'name' => $this->paths['migration'] . '/' . $name . 'MigrationByCSR',
             'basename' => $name,
             'namespace' => $namespace,
             'entity' => $entity,
