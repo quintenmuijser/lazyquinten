@@ -48,7 +48,7 @@ abstract class CsrGeneratorCommand extends GeneratorCommand
 
     protected function validateName($name)
     {
-        if (preg_match('([^A-Za-z0-9_/\\\\])', $name)) {
+        if (preg_match('([^A-Za-z0-9_\\\\])', $name)) {
             throw new InvalidArgumentException('The name "' . $name . '" contains invalid characters.');
         }
 
