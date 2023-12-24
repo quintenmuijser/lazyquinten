@@ -44,16 +44,12 @@ class CreateEverything extends Command
 
     private function createController(string $namespace, string $name, $config): void
     {
-        $data = [
-            'crud' => $config['crud'],
-            'controller' => $config['controller']
-        ];
 
         $this->call('csr:controller', [
             'name' => $this->paths['controller'] . '/' . $namespace . '/' . $name . 'Controller',
             'basename' => $name,
             'namespace' => $namespace,
-            'data' => $data,
+            'data' => $config,
         ]);
     }
 

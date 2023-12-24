@@ -33,7 +33,7 @@ class CreateController extends CsrGeneratorCommand
      */
     protected function getStub(): string
     {
-        dd($this->argument('data'));
+
         return $this->getStubPath('files/backend/controller');
     }
 
