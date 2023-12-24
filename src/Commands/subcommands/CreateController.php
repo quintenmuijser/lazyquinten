@@ -33,8 +33,9 @@ class CreateController extends CsrGeneratorCommand
      */
     protected function getStub(): string
     {
-
-        return $this->getStubPath('files/backend/controller');
+        dump("dump data incoming");
+        dump($this->argument(['data']));
+        return  __DIR__ . '/../stubs/files/backend/controller/controller.stub';
     }
 
     protected function buildReplacements(array $replace)

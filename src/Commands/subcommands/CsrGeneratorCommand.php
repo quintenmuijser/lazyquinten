@@ -19,10 +19,6 @@ abstract class CsrGeneratorCommand extends GeneratorCommand
         parent::handle();
     }
 
-    protected function getStub()
-    {
-    }
-
     protected function getStubPath($file) {
         return __DIR__ . '/../stubs/' . $file  . '.stub';
     }
