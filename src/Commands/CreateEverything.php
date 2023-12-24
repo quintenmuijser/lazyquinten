@@ -35,6 +35,9 @@ class CreateEverything extends Command
         foreach ($config['entities'] as $entity) {
             $name = ucfirst($entity['name']);
             $namespace = ucfirst($this->argument('namespace') ?? '');
+
+            $this->createRepository($namespace, $name, $entity);
+            $this->createService($namespace, $name, $entity);
             $this->createController($namespace, $name, $entity);
         }
 
@@ -45,6 +48,40 @@ class CreateEverything extends Command
     {
         $this->call('csr:controller', [
             'name' => $this->paths['controller'] . '/' . $namespace . '/' . $name . 'Controller',
+            'basename' => $name,
+            'namespace' => $namespace,
+            'entity' => $entity,
+        ]);
+    }
+
+    private function createRepository(string $namespace, string $name, $entity): void
+    {
+        $this->call('csr:irepository', [
+            'name' => $this->paths['repository_interface'] . '/' . $namespace . '/' . $name . 'Repository',
+            'basename' => $name,
+            'namespace' => $namespace,
+            'entity' => $entity,
+        ]);
+
+        $this->call('csr:repository', [
+            'name' => $this->paths['repository'] . '/' . $namespace . '/' . $name . 'Repository',
+            'basename' => $name,
+            'namespace' => $namespace,
+            'entity' => $entity,
+        ]);
+    }
+
+    private function createService(string $namespace, string $name, $entity): void
+    {
+        $this->call('csr:iservice', [
+            'name' => $this->paths['service_interface'] . '/' . $namespace . '/' . $name . 'Service',
+            'basename' => $name,
+            'namespace' => $namespace,
+            'entity' => $entity,
+        ]);
+
+        $this->call('csr:service', [
+            'name' => $this->paths['service'] . '/' . $namespace . '/' . $name . 'Service',
             'basename' => $name,
             'namespace' => $namespace,
             'entity' => $entity,

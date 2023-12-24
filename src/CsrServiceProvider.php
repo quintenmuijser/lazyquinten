@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace Quinten\Csr\Src;
 
+use Quinten\Csr\Commands\CreateIRepository;
+use Quinten\Csr\Commands\CreateIService;
+use Quinten\Csr\Commands\CreateRepository;
+use Quinten\Csr\Commands\CreateService;
 use Quinten\Csr\Src\Commands\CreateEverything;
 use Quinten\Csr\Commands\CreateController;
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
@@ -38,11 +42,12 @@ class CsrServiceProvider extends LaravelServiceProvider
             CreateEverything::class,
 //            CreateModel::class,
 //            CreatePolicy::class,
+//            CreateRequest::class,
             CreateController::class,
-//            CreateIService::class,
-//            CreateService::class,
-//            CreateIRepository::class,
-//            CreateRepository::class,
+            CreateIService::class,
+            CreateService::class,
+            CreateIRepository::class,
+            CreateRepository::class,
         ]);
     }
 

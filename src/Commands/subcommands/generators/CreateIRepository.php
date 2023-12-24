@@ -6,24 +6,25 @@ namespace Quinten\Csr\Commands;
 
 use Illuminate\Support\Str;
 
-class CreateRepoService extends CsrGeneratorCommand
+class CreateIRepository extends CsrGeneratorCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'csr:reposervice
+    protected $signature = 'csr:irepository
                             {name : The name of the controller to be created}
                             {basename : The name of the controller to be created}
-                            {namespace? : The namespace and folder to place the item in}';
+                            {namespace? : The namespace and folder to place the item in}
+                            {entity? : use entity}';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'Controller';
+    protected $type = 'IRepository';
 
     /**
      * Get the stub file for the generator.
@@ -32,7 +33,11 @@ class CreateRepoService extends CsrGeneratorCommand
      */
     protected function getStub(): string
     {
-        return $this->getStubPath('files/backend/controller');
+        if($this->arguments()['entity']['crud']) {
+            return  __DIR__ . '/../stubs/files/backend/interfaces/repository/irepositoryCrud.stub';
+        }
+
+        return  __DIR__ . '/../stubs/files/backend/interfaces/repository/irepository.stub';
     }
 
     protected function buildReplacements(array $replace)
