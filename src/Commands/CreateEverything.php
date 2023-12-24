@@ -34,7 +34,6 @@ class CreateEverything extends Command
 //        $this->displayLoadedConfig($config);
 
         foreach ($config['entities'] as $entity) {
-            dd($entity);
             $name = ucfirst($entity['name']);
             $namespace = ucfirst($this->argument('namespace') ?? '');
             $this->createController($namespace, $name, $config);
@@ -45,6 +44,7 @@ class CreateEverything extends Command
 
     private function createController(string $namespace, string $name, $config): void
     {
+        dd($name,$namespace,$config);
         $this->call('csr:controller', [
             'name' => $this->paths['controller'] . '/' . $namespace . '/' . $name . 'Controller',
             'basename' => $name,
