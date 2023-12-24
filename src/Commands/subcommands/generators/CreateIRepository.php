@@ -34,10 +34,10 @@ class CreateIRepository extends CsrGeneratorCommand
     protected function getStub(): string
     {
         if($this->arguments()['entity']['crud']) {
-            return  __DIR__ . '../../stubs/files/backend/interfaces/repository/irepositoryCrud.stub';
+            return  __DIR__ . '/../../stubs/files/backend/interfaces/repository/irepositoryCrud.stub';
         }
 
-        return  __DIR__ . '../../stubs/files/backend/interfaces/repository/irepository.stub';
+        return  __DIR__ . '/../../stubs/files/backend/interfaces/repository/irepository.stub';
     }
 
     protected function buildReplacements(array $replace)
