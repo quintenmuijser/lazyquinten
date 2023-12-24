@@ -26,7 +26,7 @@ class CreateEverything extends Command
         'repository' => 'Repositories',
         'repository_interface' => 'Interfaces/Repositories',
         'policy' => 'Policies',
-        'migration' => '../database/migrations',
+        'migration' => '/database/migrations',
     ];
 
     public function handle(): void
