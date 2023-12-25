@@ -70,7 +70,7 @@ class CreateEverything extends Command
     private function createRepository(string $namespace, string $name, $entity): void
     {
         $this->call('csr:irepository', [
-            'name' => $this->paths['repository_interface'] . '/' . $namespace . '/' . $name . 'Repository',
+            'name' => $this->paths['repository_interface'] . '/' . $namespace . '/I' . $name . 'Repository',
             'basename' => $name,
             'namespace' => $namespace,
             'entity' => $entity,
@@ -87,7 +87,7 @@ class CreateEverything extends Command
     private function createService(string $namespace, string $name, $entity): void
     {
         $this->call('csr:iservice', [
-            'name' => $this->paths['service_interface'] . '/' . $namespace . '/' . $name . 'Service',
+            'name' => $this->paths['service_interface'] . '/' . $namespace . '/I' . $name . 'Service',
             'basename' => $name,
             'namespace' => $namespace,
             'entity' => $entity,
