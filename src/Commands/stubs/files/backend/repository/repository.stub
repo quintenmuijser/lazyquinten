@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace DummyNamespace;
 
-use App\Models\{{BaseName}};
+use App\Models\{{BaseName}}\{{BaseName}};
 use App\Interfaces\Repositories\{{NamespaceShort}}I{{BaseName}}Repository;
+use Illuminate\Database\Eloquent\Collection;
 
 class {{Variable}} implements I{{BaseName}}Repository
 {

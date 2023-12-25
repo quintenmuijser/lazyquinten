@@ -7,42 +7,42 @@ namespace DummyNamespace;
 interface I{{BaseName}}Service
 {
     /**
-     * Get all {BaseName}}.
+     * Get all {{BaseName}}.
      *
      * @return Collection
      */
-    public function getAll{BaseName}}(): Collection;
+    public function getAll{{BaseName}}(): Collection;
 
     /**
      * Get a {BaseName}} by ID.
      *
      * @param int $id
-     * @return {BaseName}}
+     * @return {{BaseName}}
      */
-    public function get{BaseName}}ById($id): {BaseName}};
+    public function get{{BaseName}}ById($id): {{BaseName}};
 
     /**
-     * Create a new {BaseName}}.
+     * Create a new {{BaseName}}.
      *
      * @param array $data
-     * @return {BaseName}}
+     * @return {{BaseName}}
      */
-    public function create{BaseName}}(array $data): {BaseName}};
+    public function create{{BaseName}}(array $data): {{BaseName}};
 
     /**
-     * Update a {BaseName}}.
+     * Update a {{BaseName}}.
      *
      * @param int $id
      * @param array $data
-     * @return {BaseName}}
+     * @return {{BaseName}}
      */
-    public function update{BaseName}}($id, array $data): {BaseName}};
+    public function update{{BaseName}}($id, array $data): {{BaseName}};
 
     /**
-     * Delete a {BaseName}}.
+     * Delete a {{BaseName}}.
      *
      * @param int $id
      * @return void
      */
-    public function delete{BaseName}}($id): void;
+    public function delete{{BaseName}}($id): void;
 }
