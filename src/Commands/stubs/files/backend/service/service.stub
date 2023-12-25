@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DummyNamespace;
 
-use App\Models\{{Variable}};
+use App\Models\{{BaseName}};
 use App\Interfaces\Repositories\{{NamespaceShort}}I{{BaseName}}Repository;
 
 class {{Variable}}
