@@ -21,4 +21,79 @@ class {{Variable}} extends Controller
     {
         $this->{{baseName}}Service = ${{baseName}}Service;
     }
+
+    /**
+         * Display a listing of the resource.
+         * @return View
+         */
+        public function index(): View
+        {
+            ${{baseName}} = $this->{{baseName}}Service->getAll{{BaseName}}();
+            return view('{{baseName}}.index', compact('{{baseName}}'));
+        }
+
+        /**
+         * Show the form for creating a new resource.
+         * @return View
+         */
+        public function create(): View
+        {
+            return view('{{baseName}}.create');
+        }
+
+        /**
+         * Store a newly created resource in storage.
+         * @param {{BaseName}}Request $request
+         * @return RedirectResponse
+         */
+        public function store({{BaseName}}Request $request): RedirectResponse
+        {
+            $this->{{baseName}}Service->create{{BaseName}}($request->all());
+            return redirect()->route('{{baseName}}.index')->with('success', '{{BaseName}} created successfully');
+        }
+
+        /**
+         * Display the specified resource.
+         * @param int $id
+         * @return View
+         */
+        public function show($id): View
+        {
+            ${{baseName}} = $this->{{baseName}}Service->get{{BaseName}}ById($id);
+            return view('{{baseName}}.show', compact('{{baseName}}'));
+        }
+
+        /**
+         * Show the form for editing the specified resource.
+         * @param int $id
+         * @return View
+         */
+        public function edit($id): View
+        {
+            $product = $this->{{baseName}}Service->get{{BaseName}}ById($id);
+            return view('{{baseName}}.edit', compact('{{baseName}}'));
+        }
+
+        /**
+         * Update the specified resource in storage.
+         * @param {{BaseName}}Request $request
+         * @param int $id
+         * @return RedirectResponse
+         */
+        public function update({{BaseName}}Request $request, $id): RedirectResponse
+        {
+            $this->{{baseName}}Service->update{{BaseName}}($id, $request->all());
+            return redirect()->route('{{baseName}}.index')->with('success', '{{BaseName}} updated successfully');
+        }
+
+        /**
+         * Remove the specified resource from storage.
+         * @param int $id
+         * @return RedirectResponse
+         */
+        public function destroy($id): RedirectResponse
+        {
+            $this->{{baseName}}Service->delete{{BaseName}}($id);
+            return redirect()->route('{{baseName}}.index')->with('success', '{{BaseName}} deleted successfully');
+        }
 }

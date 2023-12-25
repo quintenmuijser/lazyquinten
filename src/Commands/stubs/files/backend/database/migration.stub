@@ -10,14 +10,12 @@ class Create{{Variable}}sTable extends Migration
     {
         Schema::create('{{Variable}}s', function (Blueprint $table) {
             $table->id();
-            {{StubMigrationUp}}
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        {{StubMigrationDown}}
         Schema::dropIfExists('{{Variable}}s');
     }
 }

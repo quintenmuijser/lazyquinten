@@ -21,4 +21,53 @@ class {{Variable}}
     {
         $this->{{baseName}}Repository = ${{baseName}}Repository;
     }
+
+    /**
+     * Get all {{baseName}}.
+     * @return Collection
+     */
+    public function getAll{{BaseName}}(): Collection
+    {
+        return $this->{{baseName}}Repository->getAll();
+    }
+
+    /**
+     * Get a {{BaseName}} by ID.
+     * @param int $id
+     * @return {{BaseName}}
+     */
+    public function getProductById($id): {{BaseName}}
+    {
+        return $this->productRepository->getById($id);
+    }
+
+    /**
+     * Create a new product.
+     * @param array $data
+     * @return {{BaseName}}
+     */
+    public function createProduct(array $data): {{BaseName}}
+    {
+        return $this->productRepository->create($data);
+    }
+
+    /**
+     * Update a product.
+     * @param int $id
+     * @param array $data
+     * @return Model
+     */
+    public function updateProduct($id, array $data): {{BaseName}}
+    {
+        return $this->productRepository->update($id, $data);
+    }
+
+    /**
+     * Delete a product.
+     * @param int $id
+     */
+    public function deleteProduct($id): void
+    {
+        $this->productRepository->delete($id);
+    }
 }
